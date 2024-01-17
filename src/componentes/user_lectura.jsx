@@ -1,8 +1,28 @@
 import React, { useEffect, useState } from 'react';
 
 const TablaUser = () => {
+
+  const [formData, setFormData] = useState({
+    usuario: '',
+    password: '',
+    people_id: '',
+    rolls_id: '',
+    fecha: '',
+  });
   const [datos, setDatos] = useState([]);
 
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+    console.log('abrir modal');
+    console.log(showModal );
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+  
   useEffect(() => {
     const token = localStorage.getItem('token');
     console.log(token);
@@ -29,10 +49,43 @@ const TablaUser = () => {
     };
 
     fetchData();
-  }, []);
+  }, [showModal]);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData)
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/registro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log('Datos enviados correctamente');
+        // Puedes realizar acciones adicionales aquí si es necesario
+      } else {
+        console.error('Error al enviar datos');
+      }
+    } catch (error) {
+      console.error('Error en la solicitud:', error);
+    }
+  };
+
 
   return (
     <div>
+      <button onClick={openModal}>Abrir Modal</button>
       <h1>Tabla de Datos</h1>
       <table>
         <thead>
@@ -55,6 +108,73 @@ const TablaUser = () => {
           ))}
         </tbody>
       </table>
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            
+      <form onSubmit={handleSubmit}>
+      <label>
+        usuario:
+        <input
+          type="text"
+          name="usuario"
+          value={formData.usuario}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input
+          type="text"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        People ID:
+        <input
+          type="text"
+          name="people_id"
+          value={formData.people_id}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Rolls ID:
+        <input
+          type="text"
+          name="rolls_id"
+          value={formData.rolls_id}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Fecha Nacimiento
+        <input
+          type="date"
+          name="date"
+          value={formData.fecha}
+          onChange={handleChange}
+        />
+            {/* Para verificar si formData.fecha tiene un valor, puedes mostrarlo en algún lugar del componente */}
+      <p>Fecha seleccionada: {formData.fecha}</p>
+      </label>
+      <br />
+      <button type="submit">Enviar</button>
+    </form>
+
+
+            <button onClick={closeModal}>Cerrar Modal</button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
