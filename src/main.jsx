@@ -5,11 +5,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import Login from "./componentes/login";
-import Registrarse from "./componentes/registrarse.jsx";
-import TablaBitacoras from "./componentes/bitacoras.jsx";
 import Rolls from "./componentes/rolls/rolls.jsx";
 import User from "./componentes/user/user_lectura.jsx";
+import Paginas from "./componentes/paginas/paginas.jsx";
+import Login from "./componentes/login/login.jsx";
+import Registrarse from "./componentes/registrarse/registrarse.jsx";
+import Bitacoras from "./componentes/bitacoras/bitacoras.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/bitacoras",
-    element: <TablaBitacoras />,
+    element: <Bitacoras />,
+  },
+  {
+    path: "/paginas",
+    element: <Paginas />,
   },
 ]);
 

@@ -1,9 +1,10 @@
-import Login from "./componentes/login"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
-import TablaUser from "./componentes/user_lectura";
-import TablaBitacoras from "./componentes/bitacoras";
 import Rolls from "./componentes/rolls/rolls";
 import User from "./componentes/user/user_lectura";
+import Paginas from "./componentes/paginas/paginas";
+import Login from './componentes/login/login';
+import Registrarse from './componentes/registrarse/registrarse';
+import Bitacoras from './componentes/bitacoras/bitacoras';
 
 
 const App_Router = () => {
@@ -21,7 +22,11 @@ const App_Router = () => {
                     <Route
                         path="/rolls" element={Rolls} />
                     <Route
-                        path="/bitacoras" element={TablaBitacoras} />
+                        path="/bitacoras" element={Bitacoras} />
+                    <Route
+                        path="/paginas" element={Paginas} />
+                    <Route
+                        path="/registrarse" element={Registrarse} />
                 </Routes>
             </Router>
         </>

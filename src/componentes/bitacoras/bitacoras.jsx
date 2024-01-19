@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 
-const TablaBitacoras = () => {
+const Bitacoras = () => {
 
   const [formData, setFormData] = useState({
     rol: '',
@@ -151,5 +151,5 @@ const TablaBitacoras = () => {
   );
 };
 
-export default TablaBitacoras;
+export default Bitacoras;
 
