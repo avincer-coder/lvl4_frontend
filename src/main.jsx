@@ -7,9 +7,9 @@ import {
 import "./index.css";
 import Login from "./componentes/login";
 import Registrarse from "./componentes/registrarse.jsx";
-import TablaUser from "./componentes/user_lectura.jsx";
-import TablaRolls from "./componentes/rolls.jsx";
 import TablaBitacoras from "./componentes/bitacoras.jsx";
+import Rolls from "./componentes/rolls/rolls.jsx";
+import User from "./componentes/user/user_lectura.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +22,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/userlectura",
-    element: <TablaUser />,
+    element: <User />,
   },
   {
     path: "/rolls",
-    element: <TablaRolls />,
+    element: <Rolls />,
   },
   {
     path: "/bitacoras",

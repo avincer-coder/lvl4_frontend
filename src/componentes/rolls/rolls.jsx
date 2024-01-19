@@ -153,7 +153,7 @@
 
 import React, { useState } from 'react';
 
-const App = () => {
+const Rolls = () => {
   const [rol, setRol] = useState('');
   const [showModal, setShowModal] = useState(false);
 
@@ -221,4 +221,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Rolls;

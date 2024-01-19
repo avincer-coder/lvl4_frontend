@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const TablaUser = () => {
+const User = () => {
 
   const [formData, setFormData] = useState({
     usuario: '',
@@ -211,5 +211,5 @@ const TablaUser = () => {
   );
 };
 
-export default TablaUser;
+export default User;
 
