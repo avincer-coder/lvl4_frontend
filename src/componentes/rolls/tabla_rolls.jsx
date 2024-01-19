@@ -36,7 +36,9 @@ const TablaRolls = ({showModal, closeModal}) => {
           }, 
           [showModal]
           );
-
+          const estadoBtn = () =>{
+            console.log('Funcion para editar el estado de btn en base de datos')
+          }
 
     return(
         <>
@@ -60,10 +62,13 @@ const TablaRolls = ({showModal, closeModal}) => {
             <tr key={item.id}>
               <td>{item.id}</td>
               <td>{item.rol}</td>
-              <td>{item.estado}</td>
+              <td>
+                {item.estado ? 'activo' : 'inactivo'}</td>
               <td>{item.created_at}</td>
               <td>{item.updated_at}</td>
-              <td>btn</td>
+              <td>
+                <button onClick={estadoBtn}>{item.estado ? 'Activo' : 'Inactivo'}</button>
+              </td>
             </tr>
           ))}
         </tbody>
