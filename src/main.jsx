@@ -6,11 +6,11 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import Rolls from "./componentes/rolls/rolls.jsx";
-import User from "./componentes/user/user_lectura.jsx";
 import Paginas from "./componentes/paginas/paginas.jsx";
 import Login from "./componentes/login/login.jsx";
 import Registrarse from "./componentes/registrarse/registrarse.jsx";
 import Bitacoras from "./componentes/bitacoras/bitacoras.jsx";
+import User from "./componentes/user/user.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/userlectura",
+    path: "/user",
     element: <User />,
   },
   {

@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
 import Rolls from "./componentes/rolls/rolls";
-import User from "./componentes/user/user_lectura";
 import Paginas from "./componentes/paginas/paginas";
 import Login from './componentes/login/login';
 import Registrarse from './componentes/registrarse/registrarse';
 import Bitacoras from './componentes/bitacoras/bitacoras';
+import User from './componentes/user/user';
 
 
 const App_Router = () => {
@@ -18,7 +18,7 @@ const App_Router = () => {
                     <Route
                         path="/login" element={Login} />
                     <Route
-                        path="/userlectura" element={User} />
+                        path="/user" element={User} />
                     <Route
                         path="/rolls" element={Rolls} />
                     <Route

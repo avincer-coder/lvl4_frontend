@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const Registrarse = () => {
-  const [values, setValues] = useState({ usuario: '', password: '' });
+const User = () => {
+  const [values, setValues] = useState({ apellidos: '', nombres: '', correo: '',  fecha: '' });
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -54,20 +54,38 @@ const Registrarse = () => {
           <div className="modal">
             <form onSubmit={handleSubmit}>
               <label>
-                Usuario
+                Correo Electronico
                 <input
                   type="text"
-                  name="usuario"
-                  value={values.usuario}
+                  name="correo"
+                  value={values.correo}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Contraseña
+                Nombres
                 <input
                   type="text"
-                  name="password"
-                  value={values.password}
+                  name="nombres"
+                  value={values.nombres}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Apellidos
+                <input
+                  type="text"
+                  name="apellidos"
+                  value={values.apellidos}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Fecha de Nacimiento
+                <input
+                  type="date"
+                  name="fecha"
+                  value={values.fecha}
                   onChange={handleChange}
                 />
               </label>
@@ -77,8 +95,12 @@ const Registrarse = () => {
           </div>
         </div>
       )}
+      {/* <TablaPaginas 
+      showModal={showModal} 
+      closeModal={closeModal}
+    /> */}
     </>
   );
 };
 
-export default Registrarse;
+export default User;
