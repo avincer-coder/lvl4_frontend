@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const User = () => {
-  const [values, setValues] = useState({ apellidos: '', nombres: '', correo: '',  fecha: '' });
+  const [values, setValues] = useState({ correo: '', nombres: '',  apellidos: '',  fecha: '' });
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -95,10 +95,6 @@ const User = () => {
           </div>
         </div>
       )}
-      {/* <TablaPaginas 
-      showModal={showModal} 
-      closeModal={closeModal}
-    /> */}
     </>
   );
 };
