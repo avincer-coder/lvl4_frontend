@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-const TablaUser = () => {
+
+const TablaBitacoras = () => {
 
   const [formData, setFormData] = useState({
-    usuario: '',
-    password: '',
-    people_id: '',
-    rolls_id: '',
-    fecha: '',
+    rol: '',
+    estado: '',
   });
   const [datos, setDatos] = useState([]);
 
@@ -29,17 +28,16 @@ const TablaUser = () => {
 
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/user', {
+        const response = await fetch('http://127.0.0.1:8000/api/bitacoras', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
           },
         });
-
         if (response.ok) {
           const data = await response.json();
-          console.log('Datos recibidos:', data.user); // Agregado para depuración
-          setDatos(data.user);
+          console.log('Datos recibidos:', data); // Agregado para depuración
+          setDatos(data);
         } else {
           console.error('Error al obtener los datos de la API');
         }
@@ -63,7 +61,7 @@ const TablaUser = () => {
     console.log(formData)
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/registro', {
+      const response = await fetch('http://127.0.0.1:8000/api/bitacoras', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,27 +83,30 @@ const TablaUser = () => {
 
   return (
     <div>
+        <NavLink to="/">
+            Registrarse
+        </NavLink>
+        <NavLink to="/Login">
+            Login
+        </NavLink> 
+
       <button onClick={openModal}>Abrir Modal</button>
       <h1>Tabla de Datos</h1>
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>ID DOS</th>
-            <th>Nombre</th>
-            <th>Roll</th>
-            <th>Fecha de nacimiento</th>
-            {/* Agrega más encabezados según tus datos */}
+            <th>Codigo de Bitacora</th>
+            <th>Bitacora</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th>Hora</th>
           </tr>
         </thead>
         <tbody>
           {datos.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
-              <td>{item.people_id}</td>
-              <td>{item.rolls_id}</td>
-              <td>{item.usuarios}</td>
-              <td>{item.fecha}</td>
+              <td>{item.rol}</td>
             </tr>
           ))}
         </tbody>
@@ -117,87 +118,26 @@ const TablaUser = () => {
             
       <form onSubmit={handleSubmit}>
       <label>
-        usuario:
+        Roll
         <input
           type="text"
-          name="usuario"
-          value={formData.usuario}
+          name="rol"
+          value={formData.rol}
           onChange={handleChange}
         />
       </label>
       <br />
       <label>
-        Password:
+        Activo
         <input
           type="text"
-          name="password"
-          value={formData.password}
+          name="estado"
+          value={formData.estado}
           onChange={handleChange}
         />
       </label>
       <br />
-      <label>
-        People ID:
-        <input
-          type="text"
-          name="people_id"
-          value={formData.people_id}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Rolls ID:
-        <input
-          type="text"
-          name="rolls_id"
-          value={formData.rolls_id}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Nombres
-        <input
-          type="text"
-          name="nombres"
-          value={formData.nombres}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Apellidos
-        <input
-          type="text"
-          name="apellidos"
-          value={formData.apellidos}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Correo
-        <input
-          type="text"
-          name="correo"
-          value={formData.correo}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Fecha Nacimiento
-        <input
-          type="date"
-          name="fecha"
-          value={formData.fecha}
-          onChange={handleChange}
-        />
-            {/* Para verificar si formData.fecha tiene un valor, puedes mostrarlo en algún lugar del componente */}
-      <p>Fecha seleccionada: {formData.fecha}</p>
-      </label>
-      <br />
+   
       <button type="submit">Enviar</button>
     </form>
 
@@ -211,5 +151,5 @@ const TablaUser = () => {
   );
 };
 
-export default TablaUser;
+export default TablaBitacoras;
 

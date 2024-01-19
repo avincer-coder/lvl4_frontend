@@ -7,6 +7,10 @@ const Registrarse = () => {
     password: '',
     people_id: '',
     rolls_id: '',
+    nombres: '',
+    apellidos: '',
+    correo: '',
+    fecha: '',
   });
 
   const handleChange = (e) => {
@@ -34,6 +38,7 @@ const Registrarse = () => {
         // Puedes realizar acciones adicionales aquí si es necesario
       } else {
         console.error('Error al enviar datos');
+        console.log(response);
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);
@@ -89,6 +94,46 @@ const Registrarse = () => {
           type="text"
           name="rolls_id"
           value={formData.rolls_id}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Nombres
+        <input
+          type="text"
+          name="nombres"
+          value={formData.nombres}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Apellidos
+        <input
+          type="text"
+          name="apellidos"
+          value={formData.apellidos}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Correo
+        <input
+          type="text"
+          name="correo"
+          value={formData.correo}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Fecha de Nacimiento
+        <input
+          type="date"
+          name="fecha"
+          value={formData.fecha}
           onChange={handleChange}
         />
       </label>
