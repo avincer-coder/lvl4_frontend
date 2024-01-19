@@ -152,6 +152,7 @@
 // src/components/Formulario.js
 
 import React, { useState } from 'react';
+import TablaRolls from './tabla_rolls';
 
 const Rolls = () => {
   const [rol, setRol] = useState('');
@@ -212,10 +213,8 @@ const Rolls = () => {
           <button onClick={closeModal}>Cerrar Modal</button>
         </div>
       </div>
-
-      
     )}
-    
+    <TablaRolls />
     
     </>
   );
