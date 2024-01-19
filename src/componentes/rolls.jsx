@@ -155,6 +155,17 @@ import React, { useState } from 'react';
 
 const App = () => {
   const [rol, setRol] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
+    const openModal = () => {
+      setShowModal(true);
+      console.log('abrir modal');
+      console.log(showModal );
+    };
+  
+    const closeModal = () => {
+      setShowModal(false);
+    };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -182,17 +193,31 @@ const App = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Rol:
-        <input
-          type="text"
-          value={rol}
-          onChange={(e) => setRol(e.target.value)}
-        />
-      </label>
-      <button type="submit">Enviar</button>
-    </form>
+    <>
+    <button onClick={openModal}>Abrir Modal</button>
+    {showModal && (
+      <div className="modal-overlay">
+        <div className="modal">
+          <form onSubmit={handleSubmit}>
+            <label>
+              Rol:
+              <input
+                type="text"
+                value={rol}
+                onChange={(e) => setRol(e.target.value)}
+              />
+            </label>
+            <button type="submit">Enviar</button>
+          </form>
+          <button onClick={closeModal}>Cerrar Modal</button>
+        </div>
+      </div>
+
+      
+    )}
+    
+    
+    </>
   );
 };
 
