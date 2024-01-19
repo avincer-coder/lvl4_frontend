@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 
-const TablaRolls = () => {
+const TablaRolls = ({showModal, closeModal}) => {
     const [datos, setDatos] = useState([]);
+    console.log('El estado del modal es:', showModal);
+
     useEffect(() => {
+            console.log('El estado del modal esssssssssss:', showModal);
             const token = localStorage.getItem('token');
             console.log(token);
         
@@ -31,7 +34,7 @@ const TablaRolls = () => {
         
             fetchData();
           }, 
-          []
+          [showModal]
           );
 
 

@@ -214,7 +214,10 @@ const Rolls = () => {
         </div>
       </div>
     )}
-    <TablaRolls />
+    <TablaRolls 
+      showModal={showModal} 
+      closeModal={closeModal}
+    />
     
     </>
   );
