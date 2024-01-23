@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TablaPaginas from './tabla_paginas';
+import Navegacion from '../navegacion/navegacion';
 
 const Paginas = () => {
   const [values, setValues] = useState({ url: '', nombre: '', descripcion: '' });
@@ -23,7 +24,7 @@ const Paginas = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Puedes incluir otros encabezados según sea necesario
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(values),
       });
@@ -49,6 +50,7 @@ const Paginas = () => {
 
   return (
     <>
+      <Navegacion />
       <button onClick={openModal}>Abrir Modal</button>
       {showModal && (
         <div className="modal-overlay">

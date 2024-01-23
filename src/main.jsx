@@ -12,6 +12,7 @@ import Registrarse from "./componentes/registrarse/registrarse.jsx";
 import User from "./componentes/user/user.jsx";
 import TablaBitacoras from "./componentes/bitacoras/tabla_bitacoras.jsx";
 import './output.css'
+import Navegacion from "./componentes/navegacion/navegacion.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/paginas",
     element: <Paginas />,
+  },
+  {
+    path: "/navegacion",
+    element: <Navegacion />,
   },
 ]);
 

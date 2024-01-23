@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TablaUser from './tabla_user';
+import Navegacion from '../navegacion/navegacion';
 
 const User = () => {
   const [values, setValues] = useState({usuario:'', password:'a', correo: '', nombres: '',  apellidos: '',  fecha: '' });
@@ -52,6 +53,7 @@ const User = () => {
 
   return (
     <>
+      <Navegacion />
       <button onClick={openModal}>Abrir Modal</button>
       {showModal && (
         <div className="modal-overlay">

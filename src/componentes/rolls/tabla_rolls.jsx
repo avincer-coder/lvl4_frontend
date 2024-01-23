@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { formatearFecha } from "../../util";
 
 const TablaRolls = ({showModal, closeModal}) => {
     const [datos, setDatos] = useState([]);
@@ -12,12 +13,12 @@ const TablaRolls = ({showModal, closeModal}) => {
             const fetchData = async () => {
               try {
                 const response = await fetch('http://127.0.0.1:8000/api/rolls' 
-                // ,{
-                //   method: 'GET',
-                //   headers: {
-                //     'Authorization': `Bearer ${token}`
-                //   },
-                // }
+                ,{
+                  method: 'GET',
+                  headers: {
+                    'Authorization': `Bearer ${token}`
+                  },
+                }
                 );
                 if (response.ok) {
                   const data = await response.json();
@@ -36,16 +37,40 @@ const TablaRolls = ({showModal, closeModal}) => {
           }, 
           [showModal]
           );
-          const estadoBtn = () =>{
-            console.log('Funcion para editar el estado de btn en base de datos')
+          const estadoBtn  = async () =>{
+            console.log(token);
+            const newEstado = ishabilitado ? 1 : 0;
+            setEstado(newEstado);
+            console.log(newEstado);
+            try {
+              const response = await fetch(`http://127.0.0.1:8000/api/rolls/${userid}` 
+              ,{
+                method: 'PUT',
+                
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(
+                  {  
+                    "estado" : estado
+                  }),
+              }
+              );
+              if (response.ok) {
+               console.log('respuesta bien hecha')
+              } else {
+                console.error('Error al obtener los datos de la API');
+              }
+            } catch (error) {
+              console.error('Error en la solicitud:', error);
+            }
+
           }
 
     return(
         <>
-            <p>
-                PRUEBAAAAA
-            </p>
-            <table>
+          <table>
          <thead>
            <tr>
              <th>Codigo de Roll</th>
@@ -63,10 +88,18 @@ const TablaRolls = ({showModal, closeModal}) => {
               <td>{item.id}</td>
               <td>{item.rol}</td>
               <td>{item.estado ? 'activo' : 'inactivo'}</td>
-              <td>{item.created_at}</td>
-              <td>{item.updated_at}</td>
               <td>
-                <button onClick={estadoBtn}>{item.estado ? 'Activo' : 'Inactivo'}</button>
+              {
+                
+              
+                formatearFecha(item.created_at)
+              
+              
+              }
+              </td>
+              <td>{formatearFecha(item.updated_at)}</td>
+              <td>
+                <button onClick={()=>estadoBtn(item.id, item.estado)}>{item.estado ? 'Activo' : 'Inactivo'}</button>
               </td>
             </tr>
           ))}

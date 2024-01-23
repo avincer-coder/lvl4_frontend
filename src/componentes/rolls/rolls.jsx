@@ -153,6 +153,7 @@
 
 import React, { useState } from 'react';
 import TablaRolls from './tabla_rolls';
+import Navegacion from '../navegacion/navegacion';
 
 const Rolls = () => {
   const [rol, setRol] = useState('');
@@ -195,6 +196,7 @@ const Rolls = () => {
 
   return (
     <>
+    <Navegacion />
     <button onClick={openModal}>Abrir Modal</button>
     {showModal && (
       <div className="modal-overlay">

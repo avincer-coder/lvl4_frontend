@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Navegacion from "../navegacion/navegacion";
 
 const TablaBitacoras = () => {
     const [datos, setDatos] = useState([]);
@@ -39,6 +40,7 @@ const TablaBitacoras = () => {
 
     return(
         <>
+        <Navegacion />
             <table>
          <thead>
            <tr>

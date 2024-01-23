@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { formatearFecha } from "../../util";
 
 const TablaUser = ({showModal, closeModal}) => {
     const [datos, setDatos] = useState([]);
@@ -69,9 +70,6 @@ const TablaUser = ({showModal, closeModal}) => {
 
     return(
         <>
-            <p>
-                PRUEBAAAAA
-            </p>
             <table>
          <thead>
            <tr>
@@ -92,9 +90,9 @@ const TablaUser = ({showModal, closeModal}) => {
               <td>{item.correo}</td>
               <td>
                 {item.habilitado ? 'Activo' : 'Inactivo'}</td>
-              <td>{item.created_at}</td>
+              <td>{formatearFecha(item.created_at)}</td>
               <td>{item.rolls_id}</td>
-              <td>{item.updated_at}</td>
+              <td>{formatearFecha(item.updated_at)}</td>
               <td>
                 <button onClick={()=>estadoBtn(item.id, item.habilitado)}>     
                   {item.habilitado ? 'Activo' : 'Inactivo'}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { formatearFecha } from "../../util";
 
 const TablaPaginas = ({showModal, closeModal}) => {
     const [datos, setDatos] = useState([]);
@@ -12,12 +13,12 @@ const TablaPaginas = ({showModal, closeModal}) => {
             const fetchData = async () => {
               try {
                 const response = await fetch('http://127.0.0.1:8000/api/paginas' 
-                // ,{
-                //   method: 'GET',
-                //   headers: {
-                //     'Authorization': `Bearer ${token}`
-                //   },
-                // }
+                ,{
+                  method: 'GET',
+                  headers: {
+                    'Authorization': `Bearer ${token}`
+                  },
+                }
                 );
                 if (response.ok) {
                   const data = await response.json();
@@ -42,9 +43,6 @@ const TablaPaginas = ({showModal, closeModal}) => {
 
     return(
         <>
-            <p>
-                PRUEBAAAAA
-            </p>
             <table>
          <thead>
            <tr>
@@ -62,7 +60,7 @@ const TablaPaginas = ({showModal, closeModal}) => {
               <td>{item.url}</td>
               <td>{item.nombre}</td>
               <td>{item.descripcion}</td>
-              <td>{item.created_at}</td>
+              <td>{formatearFecha(item.created_at)}</td>
             </tr>
           ))}
         </tbody>

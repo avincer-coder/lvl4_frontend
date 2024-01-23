@@ -5,6 +5,7 @@ import Login from './componentes/login/login';
 import Registrarse from './componentes/registrarse/registrarse';
 import User from './componentes/user/user';
 import TablaBitacoras from './componentes/bitacoras/tabla_bitacoras';
+import Navegacion from './componentes/navegacion/navegacion';
 
 
 const App_Router = () => {
@@ -27,6 +28,8 @@ const App_Router = () => {
                         path="/paginas" element={Paginas} />
                     <Route
                         path="/registrarse" element={Registrarse} />
+                    <Route
+                        path="/navegacion" element={Navegacion} />
                 </Routes>
             </Router>
         </>
