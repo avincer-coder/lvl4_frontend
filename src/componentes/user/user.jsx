@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import TablaUser from './tabla_user';
 
 const User = () => {
-  const [values, setValues] = useState({ correo: '', nombres: '',  apellidos: '',  fecha: '' });
+  const [values, setValues] = useState({usuario:'', password:'a', correo: '', nombres: '',  apellidos: '',  fecha: '' });
   const [showModal, setShowModal] = useState(false);
+  const token = localStorage.getItem('token');
+  console.log(token);
 
   const openModal = () => {
     setShowModal(true);
@@ -22,6 +25,7 @@ const User = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
           // Puedes incluir otros encabezados según sea necesario
         },
         body: JSON.stringify(values),
@@ -89,12 +93,26 @@ const User = () => {
                   onChange={handleChange}
                 />
               </label>
+              <label>
+                Escribe un usuario
+                <input
+                  type="text"
+                  name="usuario"
+                  value={values.usuario}
+                  onChange={handleChange}
+                />
+              </label>
               <button type="submit">Enviar</button>
             </form>
             <button onClick={closeModal}>Cerrar Modal</button>
           </div>
         </div>
       )}
+
+      <TablaUser 
+        showModal={showModal} 
+        closeModal={closeModal}
+      />
     </>
   );
 };

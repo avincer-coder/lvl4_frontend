@@ -9,8 +9,9 @@ import Rolls from "./componentes/rolls/rolls.jsx";
 import Paginas from "./componentes/paginas/paginas.jsx";
 import Login from "./componentes/login/login.jsx";
 import Registrarse from "./componentes/registrarse/registrarse.jsx";
-import Bitacoras from "./componentes/bitacoras/bitacoras.jsx";
 import User from "./componentes/user/user.jsx";
+import TablaBitacoras from "./componentes/bitacoras/tabla_bitacoras.jsx";
+import './output.css'
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/bitacoras",
-    element: <Bitacoras />,
+    element: <TablaBitacoras />,
   },
   {
     path: "/paginas",

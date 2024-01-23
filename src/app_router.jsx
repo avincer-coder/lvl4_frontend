@@ -3,8 +3,8 @@ import Rolls from "./componentes/rolls/rolls";
 import Paginas from "./componentes/paginas/paginas";
 import Login from './componentes/login/login';
 import Registrarse from './componentes/registrarse/registrarse';
-import Bitacoras from './componentes/bitacoras/bitacoras';
 import User from './componentes/user/user';
+import TablaBitacoras from './componentes/bitacoras/tabla_bitacoras';
 
 
 const App_Router = () => {
@@ -22,7 +22,7 @@ const App_Router = () => {
                     <Route
                         path="/rolls" element={Rolls} />
                     <Route
-                        path="/bitacoras" element={Bitacoras} />
+                        path="/bitacoras" element={TablaBitacoras} />
                     <Route
                         path="/paginas" element={Paginas} />
                     <Route

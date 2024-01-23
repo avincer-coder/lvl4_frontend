@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faGoogle, faGithub, faSquareFacebook, faTwitter} from '@fortawesome/free-brands-svg-icons'
+import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons'
+import dev from '../img/dev.png';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     usuario: '',
     password: '',
@@ -28,6 +34,7 @@ const Login = () => {
         console.log('Inicio de sesión exitoso');
         const json_response = await response.json()
         localStorage.setItem('token', json_response.token)
+        navigate("/user");
         // Puedes realizar acciones adicionales aquí si es necesario, como redireccionar a otra página
       } else {
         console.error('Error en el inicio de sesión');
@@ -38,20 +45,25 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Nombre de usuario:
+    <main className='border-solid border-2 border-red-700 flex h-screen justify-center items-center '>
+    <form className='border-[1px] border-solid rounded  shadow-xl shadow-black flex items-center justify-around flex-col h-[400px] p-6' onSubmit={handleSubmit}>
+      <section className='w-full'>
+        <img className='w-[100px]'  src={dev} alt="dev" />
+      </section>
+      <h1 className='w-[200px] text-lg font-bold	'>Login</h1>
+      <label  className='block border-solid border border-slate-500 rounded pl-2'>
+        <FontAwesomeIcon icon={faEnvelope} />
         <input
+          className='ml-[5px] rounded pl-2'
           type="text"
           name="usuario"
           value={credentials.usuario}
           onChange={handleChange}
         />
       </label>
-      <br />
-      <label>
-        Contraseña:
-        <input
+      <label  className='block border-solid border border-slate-500 rounded pl-2'>
+      <FontAwesomeIcon icon={faLock} />        <input
+          className='ml-[5px] rounded pl-2'
           type="password"
           name="password"
           value={credentials.password}
@@ -59,8 +71,18 @@ const Login = () => {
         />
       </label>
       <br />
-      <button type="submit">Iniciar sesión</button>
+      <button  className='bg-blue-500 text-neutral-100	w-full rounded'  type="submit">Login</button>
+      <h2>or continue with these social profile</h2>
+      <section className='w-full flex justify-evenly	'>
+        <FontAwesomeIcon icon={faGoogle} />
+        <FontAwesomeIcon icon={faSquareFacebook} />
+        <FontAwesomeIcon icon={faTwitter} />
+        <FontAwesomeIcon icon={faGithub} />
+      </section>
+      <h2>Don't have an account yet? <a className='text-blue-500 underline' href="http://localhost:5173/login"> Register</a></h2>
+      
     </form>
+    </main>
   );
 };
 

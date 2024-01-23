@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
-const TablaRolls = ({showModal, closeModal}) => {
+const TablaBitacoras = () => {
     const [datos, setDatos] = useState([]);
-    console.log('El estado del modal es:', showModal);
+   
 
     useEffect(() => {
-            console.log('El estado del modal esssssssssss:', showModal);
+          
             const token = localStorage.getItem('token');
             console.log(token);
         
             const fetchData = async () => {
               try {
-                const response = await fetch('http://127.0.0.1:8000/api/rolls' 
+                const response = await fetch('http://127.0.0.1:8000/api/bitacoras' 
                 // ,{
                 //   method: 'GET',
                 //   headers: {
@@ -21,8 +21,8 @@ const TablaRolls = ({showModal, closeModal}) => {
                 );
                 if (response.ok) {
                   const data = await response.json();
-                  console.log('Datos recibidos:', data); // Agregado para depuración
-                  setDatos(data);
+                  console.log('Datos recibidos:', data.bitacoras); // Agregado para depuración
+                  setDatos(data.bitacoras);
                  
                 } else {
                   console.error('Error al obtener los datos de la API');
@@ -34,40 +34,27 @@ const TablaRolls = ({showModal, closeModal}) => {
         
             fetchData();
           }, 
-          [showModal]
+          []
           );
-          const estadoBtn = () =>{
-            console.log('Funcion para editar el estado de btn en base de datos')
-          }
 
     return(
         <>
-            <p>
-                PRUEBAAAAA
-            </p>
             <table>
          <thead>
            <tr>
-             <th>Codigo de Roll</th>
-             <th>Roll</th>
-             <th>Estado</th>
-             <th>Fecha de Creación</th>
-             <th>Fecha de Modificación</th>
-             <th>Cambiar Estado</th>
-
+             <th>Codigo de Bitacora</th>
+             <th>Bitacora</th>
+             <th>Fecha</th>
+             <th>Hora</th>
            </tr>
          </thead>
          <tbody>
            {datos.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
-              <td>{item.rol}</td>
-              <td>{item.estado ? 'activo' : 'inactivo'}</td>
-              <td>{item.created_at}</td>
-              <td>{item.updated_at}</td>
-              <td>
-                <button onClick={estadoBtn}>{item.estado ? 'Activo' : 'Inactivo'}</button>
-              </td>
+              <td>{item.bitacora}</td>
+              <td>{item.fecha}</td>
+              <td>{item.hora}</td>
             </tr>
           ))}
         </tbody>
@@ -75,4 +62,4 @@ const TablaRolls = ({showModal, closeModal}) => {
         </>
     )
 }
-export default TablaRolls
+export default TablaBitacoras
