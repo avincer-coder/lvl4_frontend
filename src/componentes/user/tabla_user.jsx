@@ -43,7 +43,7 @@ const TablaUser = ({showModal, closeModal}) => {
           const estadoBtn = async (userid ,ishabilitado) =>{
             console.log(token);
             const newEstado = ishabilitado ? 0 : 1;
-            setEstado(newEstado);
+            setEstado(prevState=>(prevState===undefined ? newEstado : !prevState));
             console.log(newEstado);
             console.log('Numero de usuario para comprobaaaaarrrrr' + userid);
             try {
@@ -96,7 +96,7 @@ const TablaUser = ({showModal, closeModal}) => {
               <td className="text-center">{formatearFecha(item.created_at)}</td>
               <td className="text-center">{item.rolls_id}</td>
               <td className="text-center">{formatearFecha(item.updated_at)}</td>
-              <td className="text-center text-green-500">
+              <td className={`text-center ${item.habilitado ? 'text-green-500' : 'text-red-500'}`}>
                 <button onClick={()=>estadoBtn(item.id, item.habilitado)}>     
                   {item.habilitado ? 'Activo' : 'Inactivo'}
                   <FontAwesomeIcon className="ml-4" icon={faFileCirclePlus} />
