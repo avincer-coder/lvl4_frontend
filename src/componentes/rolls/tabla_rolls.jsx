@@ -5,13 +5,11 @@ import {faFileCirclePlus} from '@fortawesome/free-solid-svg-icons';
 
 const TablaRolls = ({showModal, closeModal}) => {
     const [datos, setDatos] = useState([]);
-    console.log('El estado del modal es:', showModal);
+    const token = localStorage.getItem('token');
+    const [estado, setEstado] = useState(undefined);
 
     useEffect(() => {
-            console.log('El estado del modal esssssssssss:', showModal);
-            const token = localStorage.getItem('token');
-            console.log(token);
-        
+                   
             const fetchData = async () => {
               try {
                 const response = await fetch('http://127.0.0.1:8000/api/rolls' 
@@ -24,7 +22,6 @@ const TablaRolls = ({showModal, closeModal}) => {
                 );
                 if (response.ok) {
                   const data = await response.json();
-                  console.log('Datos recibidos:', data); // Agregado para depuración
                   setDatos(data);
                  
                 } else {
@@ -37,15 +34,15 @@ const TablaRolls = ({showModal, closeModal}) => {
         
             fetchData();
           }, 
-          [showModal]
+          [showModal, estado]
           );
-          const estadoBtn  = async () =>{
-            console.log(token);
-            const newEstado = ishabilitado ? 1 : 0;
-            setEstado(newEstado);
+          const estadoBtn  = async (rolid, ishabilitado) =>{
+            const newEstado = ishabilitado ? 0 : 1;
+            setEstado(prevState=>(prevState===undefined ? newEstado : !prevState));
+            console.log("Aqui abajo deberia ir el cambio de estado");
             console.log(newEstado);
             try {
-              const response = await fetch(`http://127.0.0.1:8000/api/rolls/${userid}` 
+              const response = await fetch(`http://127.0.0.1:8000/api/rolls/${rolid}` 
               ,{
                 method: 'PUT',
                 
@@ -55,7 +52,7 @@ const TablaRolls = ({showModal, closeModal}) => {
                 },
                 body: JSON.stringify(
                   {  
-                    "estado" : estado
+                    "estado" : newEstado
                   }),
               }
               );
@@ -100,7 +97,7 @@ const TablaRolls = ({showModal, closeModal}) => {
               }
               </td >
               <td className="text-center"> {formatearFecha(item.updated_at)}</td>
-              <td className="text-center text-green-500">
+              <td className={`text-center ${item.estado ? 'text-green-500' : 'text-red-500'}`}>
                 <button onClick={()=>estadoBtn(item.id, item.estado)}>{item.estado ? 'Activo' : 'Inactivo'}
                   <FontAwesomeIcon className="ml-4" icon={faFileCirclePlus} />
                 </button>
