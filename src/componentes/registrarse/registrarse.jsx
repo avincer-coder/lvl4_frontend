@@ -44,34 +44,36 @@ const Registrarse = () => {
 
   return (
     <main className='flex h-screen justify-center items-center '>
-            <form className='border-[1px] border-solid rounded  shadow-xl shadow-black flex items-center justify-around flex-col h-[350px] p-6' onSubmit={handleSubmit}>
+            <form className='border-[1px] border-solid rounded-lg  shadow-xl shadow-black flex items-center justify-around flex-col w-[400px] h-[500px] p-6' onSubmit={handleSubmit}>
               <section className='w-full'>
-                <img src={dev} alt="dev" className='w-[100px]' />
-              </section>
-              <h1 className='w-[200px] text-lg font-bold	'>Create a new user and password</h1>
-              <label className='block border-solid border border-slate-500 rounded pl-2'>
+                <img src={dev} alt="dev" className='w-[150px]' />
+              </section >
+              <h1 className='w-full text-2xl font-bold	'>Create a new user and password</h1>
+              <label className='block border-solid border border-slate-500 rounded pl-2 w-[350px] h-10 flex items-center'>
                 <FontAwesomeIcon icon={faEnvelope} />
                 <input
-                  className='ml-[5px] rounded pl-2'
+                  className='ml-[5px] rounded pl-2 w-[322px] h-10 bg-transparent'
                   type="text"
                   name="usuario"
                   value={values.usuario}
                   onChange={handleChange}
+                  placeholder='Usuario'
                 />
               </label>
-              <label  className='block border-solid border border-slate-500 rounded pl-2'>
+              <label  className='block border-solid border border-slate-500 rounded pl-2 w-[350px] h-10 flex items-center'>
                 <FontAwesomeIcon icon={faLock} />
                 <input
-                  className='ml-[5px] rounded pl-2'
+                  className='ml-[5px] rounded pl-2 w-[322px] h-10 bg-transparent'
                   type="text"
                   name="password"
                   value={values.password}
                   onChange={handleChange}
+                  placeholder='Contraseña'
                 />
               </label>
-              <button className='bg-blue-500 text-neutral-100	w-full rounded' type="submit">Register</button>
+              <button className='bg-blue-600 text-neutral-100	w-full rounded-lg h-10'type="submit">Register</button>
               <p>or</p>
-              <NavLink to='/login'>Login</NavLink>
+              <NavLink className="text-blue-500 underline" to='/login'>Login</NavLink>
             </form>
             
     </main>

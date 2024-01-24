@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { formatearFecha } from "../../util";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faFileCirclePlus} from '@fortawesome/free-solid-svg-icons';
 
 const TablaRolls = ({showModal, closeModal}) => {
     const [datos, setDatos] = useState([]);
@@ -70,9 +72,9 @@ const TablaRolls = ({showModal, closeModal}) => {
 
     return(
         <>
-          <table>
-         <thead>
-           <tr>
+        <table className="mx-[70px] mt-12 w-[1000px]">
+          <thead className="mb-[40px]">
+           <tr className="mb-[50px] border-b-[3.5px] border-solid border-blue-200 h-[50px]">
              <th>Codigo de Roll</th>
              <th>Roll</th>
              <th>Estado</th>
@@ -84,11 +86,11 @@ const TablaRolls = ({showModal, closeModal}) => {
          </thead>
          <tbody>
            {datos.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.rol}</td>
-              <td>{item.estado ? 'activo' : 'inactivo'}</td>
-              <td>
+            <tr className="border-t-[3.5px] border-solid border-blue-200" key={item.id}>
+              <td className="flex justify-center">{item.id}</td>
+              <td className="text-center">{item.rol}</td>
+              <td className="text-center">{item.estado ? 'activo' : 'inactivo'}</td>
+              <td className="text-center">
               {
                 
               
@@ -96,10 +98,12 @@ const TablaRolls = ({showModal, closeModal}) => {
               
               
               }
-              </td>
-              <td>{formatearFecha(item.updated_at)}</td>
-              <td>
-                <button onClick={()=>estadoBtn(item.id, item.estado)}>{item.estado ? 'Activo' : 'Inactivo'}</button>
+              </td >
+              <td className="text-center"> {formatearFecha(item.updated_at)}</td>
+              <td className="text-center text-green-500">
+                <button onClick={()=>estadoBtn(item.id, item.estado)}>{item.estado ? 'Activo' : 'Inactivo'}
+                  <FontAwesomeIcon className="ml-4" icon={faFileCirclePlus} />
+                </button>
               </td>
             </tr>
           ))}

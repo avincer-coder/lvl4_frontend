@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { formatearFecha } from "../../util";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faFileCirclePlus} from '@fortawesome/free-solid-svg-icons';
+
 
 const TablaUser = ({showModal, closeModal}) => {
     const [datos, setDatos] = useState([]);
@@ -93,9 +96,10 @@ const TablaUser = ({showModal, closeModal}) => {
               <td className="text-center">{formatearFecha(item.created_at)}</td>
               <td className="text-center">{item.rolls_id}</td>
               <td className="text-center">{formatearFecha(item.updated_at)}</td>
-              <td className="text-center">
+              <td className="text-center text-green-500">
                 <button onClick={()=>estadoBtn(item.id, item.habilitado)}>     
                   {item.habilitado ? 'Activo' : 'Inactivo'}
+                  <FontAwesomeIcon className="ml-4" icon={faFileCirclePlus} />
                 </button>
               </td>
             </tr>

@@ -48,41 +48,43 @@ const Login = () => {
 
   return (
     <main className='flex h-screen justify-center items-center '>
-    <form className='border-[1px] border-solid rounded  shadow-xl shadow-black flex items-center justify-around flex-col h-[400px] p-6' onSubmit={handleSubmit}>
+    <form className='border-[1px] border-solid rounded-lg  shadow-xl shadow-black flex items-center justify-around flex-col w-[400px] h-[500px] p-6' onSubmit={handleSubmit}>
       <section className='w-full'>
-        <img className='w-[100px]'  src={dev} alt="dev" />
+        <img className='w-[150px]'  src={dev} alt="dev" />
       </section>
-      <h1 className='w-[200px] text-lg font-bold	'>Login</h1>
-      <label  className='block border-solid border border-slate-500 rounded pl-2'>
-        <FontAwesomeIcon icon={faEnvelope} />
+      <h1 className='w-full text-4xl font-bold	'>Login</h1>
+      <label  className='flex block border-solid border border-slate-500 rounded pl-2 w-[350px] h-10 items-center	'>
+        <FontAwesomeIcon className='text-xl' icon={faEnvelope} />
         <input
-          className='ml-[5px] rounded pl-2'
+          className='ml-[5px] rounded pl-2 w-[319px] h-10 bg-transparent'
           type="text"
           name="usuario"
           value={credentials.usuario}
           onChange={handleChange}
+          placeholder='Usuario'
         />
       </label>
-      <label  className='block border-solid border border-slate-500 rounded pl-2'>
-      <FontAwesomeIcon icon={faLock} />        <input
-          className='ml-[5px] rounded pl-2'
+      <label  className='block border-solid border border-slate-500 rounded pl-2 w-[350px] h-10 flex items-center'>
+      <FontAwesomeIcon className='text-xl' icon={faLock} />        <input
+          className='ml-[5px] rounded pl-2 w-[322px] h-10 bg-transparent'
           type="password"
           name="password"
           value={credentials.password}
           onChange={handleChange}
+          placeholder='Contraseña'
         />
       </label>
       <br />
-      <button  className='bg-blue-500 text-neutral-100	w-full rounded'  type="submit">Login</button>
+      <button  className='bg-blue-600 text-neutral-100	w-full rounded-lg h-10'  type="submit">Login</button>
       <h2>or continue with these social profile</h2>
       <section className='w-full flex justify-evenly	'>
-        <FontAwesomeIcon icon={faGoogle} />
-        <FontAwesomeIcon icon={faSquareFacebook} />
-        <FontAwesomeIcon icon={faTwitter} />
-        <FontAwesomeIcon icon={faGithub} />
+        <FontAwesomeIcon className='text-2xl hover:cursor-pointer' icon={faGoogle} />
+        <FontAwesomeIcon className='hover:cursor-pointer text-2xl' icon={faSquareFacebook} />
+        <FontAwesomeIcon className='hover:cursor-pointer text-2xl' icon={faTwitter} />
+        <FontAwesomeIcon className='hover:cursor-pointer text-2xl' icon={faGithub} />
       </section>
       <h2>Don't have an account yet? 
-        <NavLink to='/'>Register</NavLink>
+        <NavLink className=" hover:cursor-pointer text-blue-500 underline" to='/'> Register</NavLink>
       </h2>
       
     </form>

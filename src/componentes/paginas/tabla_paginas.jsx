@@ -43,24 +43,24 @@ const TablaPaginas = ({showModal, closeModal}) => {
 
     return(
         <>
-            <table>
-         <thead>
-           <tr>
-             <th>ID de la Pagina</th>
+        <table className="mx-[40px] mt-12">
+          <thead className="mb-[20px]">
+           <tr className="mb-[50px] border-b-[3.5px] border-solid border-blue-200 h-[50px]">
+             <th className="w-[100px]">ID de la Pagina</th>
              <th>URL</th>
-             <th>Nombre de la Pagina</th>
+             <th className="w-[150px]">Nombre de la Pagina</th>
              <th>Descripción</th>
              <th>Creado</th>
            </tr>
          </thead>
          <tbody>
            {datos.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.url}</td>
-              <td>{item.nombre}</td>
-              <td>{item.descripcion}</td>
-              <td>{formatearFecha(item.created_at)}</td>
+            <tr  className="border-t-[3.5px] border-solid border-blue-200" key={item.id}>
+              <td className="flex justify-center">{item.id}</td>
+              <td className="text-center w-[200px]">{item.url}</td>
+              <td className="text-center w-[100px]">{item.nombre}</td>
+              <td className="text-center w-[200px]">{item.descripcion}</td>
+              <td className="text-center w-[100px]">{formatearFecha(item.created_at)}</td>
             </tr>
           ))}
         </tbody>
