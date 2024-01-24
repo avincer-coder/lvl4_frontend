@@ -78,10 +78,10 @@ const Login = () => {
       <button  className='bg-blue-600 text-neutral-100	w-full rounded-lg h-10'  type="submit">Login</button>
       <h2>or continue with these social profile</h2>
       <section className='w-full flex justify-evenly	'>
-        <FontAwesomeIcon className='text-2xl hover:cursor-pointer' icon={faGoogle} />
-        <FontAwesomeIcon className='hover:cursor-pointer text-2xl' icon={faSquareFacebook} />
-        <FontAwesomeIcon className='hover:cursor-pointer text-2xl' icon={faTwitter} />
-        <FontAwesomeIcon className='hover:cursor-pointer text-2xl' icon={faGithub} />
+        <FontAwesomeIcon className='text-3xl hover:cursor-pointer' icon={faGoogle} />
+        <FontAwesomeIcon className='hover:cursor-pointer text-3xl' icon={faSquareFacebook} />
+        <FontAwesomeIcon className='hover:cursor-pointer text-3xl' icon={faTwitter} />
+        <FontAwesomeIcon className='hover:cursor-pointer text-3xl' icon={faGithub} />
       </section>
       <h2>Don't have an account yet? 
         <NavLink className=" hover:cursor-pointer text-blue-500 underline" to='/'> Register</NavLink>

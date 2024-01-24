@@ -72,14 +72,14 @@ const User = () => {
       </section>
       <section className='flex flex-col justify-center items-center w-full'>
       <section className='border-b-[1px] border-solid rounded-lg shadow-xl shadow-black border-black bg-slate-50 w-full flex justify-between items-center px-[30px] h-[70px] mb-[60px]'>
-        <div>
+        <NavLink to='/dashboard'>
           <FontAwesomeIcon className="ml-4 mr-2" icon={faBars} />
           Home
-        </div>
+        </NavLink>
         {/* <button>Admin
           <FontAwesomeIcon className="ml-4" icon={faChevronDown} />
         </button> */}
-        <NavLink to='/login' className="text-red-500"> Log out <FontAwesomeIcon icon={faCaretRight} className="pr-2"/></NavLink>
+        <NavLink to='/login' className="text-red-500"> Log out      <FontAwesomeIcon icon={faCaretRight} className="pr-2"/></NavLink>
       </section>
       <h2 className='w-full ml-[120px] text-4xl font-semibold mb-[40px]'>
         Dashboard
@@ -151,7 +151,7 @@ const User = () => {
               <p className='text-gray-400 text-center'>La contraseña sera por defecto tu usuario</p>
               <button className='mb-[10px] bg-gray-600 text-neutral-100	w-full h-[35px] rounded-lg' type="submit">Guardar</button>
             </form>
-            <button className='bg-red-600 text-neutral-100	w-full h-[40px] rounded-lg' onClick={closeModal}>Cerrar</button>
+            <button className='bg-red-600 text-neutral-100	w-full h-[40px] rounded-lg' onClick={closeModal}>Cerrar y Mostrar Nuevo Usuario</button>
           </div>
         </div>
       )}

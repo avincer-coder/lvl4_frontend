@@ -6,6 +6,7 @@ import Registrarse from './componentes/registrarse/registrarse';
 import User from './componentes/user/user';
 import TablaBitacoras from './componentes/bitacoras/tabla_bitacoras';
 import Navegacion from './componentes/navegacion/navegacion';
+import Dashboard from './componentes/dashboard/dashboard';
 
 
 const App_Router = () => {
@@ -30,6 +31,8 @@ const App_Router = () => {
                         path="/registrarse" element={Registrarse} />
                     <Route
                         path="/navegacion" element={Navegacion} />
+                    <Route
+                        path="/dashboard" element={Dashboard} />
                 </Routes>
             </Router>
         </>

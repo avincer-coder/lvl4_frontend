@@ -56,10 +56,10 @@ const Paginas = () => {
       </section>
       <section className='flex flex-col justify-center items-center w-full'>
       <section className='border-b-[1px] border-solid rounded-lg shadow-xl shadow-black border-black bg-slate-50 w-full flex justify-between items-center px-[30px] h-[70px] mb-[60px]'>
-        <div>
+        <NavLink to='/dashboard'>
           <FontAwesomeIcon className="ml-4 mr-2" icon={faBars} />
           Home
-        </div>
+        </NavLink>
         {/* <button>Admin
           <FontAwesomeIcon className="ml-4" icon={faChevronDown} />
         </button> */}
@@ -115,7 +115,7 @@ const Paginas = () => {
               className='mb-[10px] bg-gray-600 text-neutral-100	w-full h-[35px] rounded-lg'
               type="submit">Guardar</button>
             </form>
-            <button className='bg-red-600 text-neutral-100	w-full h-[40px] rounded-lg' onClick={closeModal}>Cerrar Modal</button>
+            <button className='bg-red-600 text-neutral-100	w-full h-[40px] rounded-lg' onClick={closeModal}>Cerrar y Mostrar Nueva Pagina</button>
           </div>
         </div>
       )}

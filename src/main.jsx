@@ -13,6 +13,7 @@ import User from "./componentes/user/user.jsx";
 import TablaBitacoras from "./componentes/bitacoras/tabla_bitacoras.jsx";
 import './output.css'
 import Navegacion from "./componentes/navegacion/navegacion.jsx";
+import Dashboard from "./componentes/dashboard/dashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/navegacion",
     element: <Navegacion />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 
