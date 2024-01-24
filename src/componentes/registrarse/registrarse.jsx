@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import dev from '../img/dev.png';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -71,8 +71,7 @@ const Registrarse = () => {
               </label>
               <button className='bg-blue-500 text-neutral-100	w-full rounded' type="submit">Register</button>
               <p>or</p>
-              <a className='text-blue-500 underline' href="">Login</a>
-              
+              <NavLink to='/login'>Login</NavLink>
             </form>
             
     </main>

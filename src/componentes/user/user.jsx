@@ -3,7 +3,7 @@ import TablaUser from './tabla_user';
 import Navegacion from '../navegacion/navegacion';
 
 const User = () => {
-  const [values, setValues] = useState({usuario:'', password:'a', correo: '', nombres: '',  apellidos: '',  fecha: '' });
+  const [values, setValues] = useState({usuario:'', password:'', correo: '', nombres: '',  apellidos: '',  fecha: '' });
   const [showModal, setShowModal] = useState(false);
   const token = localStorage.getItem('token');
   console.log(token);
@@ -20,7 +20,8 @@ const User = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
+    console.log(values.password);
+    console.log(values.usuario);
     try {
       const response = await fetch('http://127.0.0.1:8000/api/user', {
         method: 'POST',
@@ -45,15 +46,28 @@ const User = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues((prevValues) => ({
-      ...prevValues,
-      [name]: value,
-    }));
+  
+    // Si el campo es 'usuario', establecer el mismo valor en 'password'
+    if (name === 'usuario') {
+      setValues((prevValues) => ({
+        ...prevValues,
+        usuario: value,
+        password: value,  // Establecer el mismo valor de 'usuario' en 'password'
+      }));
+    } else {
+      setValues((prevValues) => ({
+        ...prevValues,
+        [name]: value,
+      }));
+    }
   };
 
   return (
-    <>
-      <Navegacion />
+    <main className='flex bg-gray-400'>
+      <section>
+        <Navegacion className="bg-blue-600" />
+      </section>
+      <section className='flex flex-col justify-center items-center w-full'>
       <button onClick={openModal}>Abrir Modal</button>
       {showModal && (
         <div className="modal-overlay">
@@ -111,11 +125,14 @@ const User = () => {
         </div>
       )}
 
-      <TablaUser 
-        showModal={showModal} 
-        closeModal={closeModal}
-      />
-    </>
+      <article className='border-[1px] border-solid rounded-lg  shadow-xl shadow-black border-black  mb-[60px] bg-slate-50'>
+        <TablaUser 
+          showModal={showModal} 
+          closeModal={closeModal}
+        />
+      </article>
+      </section>
+    </main>
   );
 };
 

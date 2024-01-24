@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faGoogle, faGithub, faSquareFacebook, faTwitter} from '@fortawesome/free-brands-svg-icons'
 import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons'
@@ -34,6 +34,8 @@ const Login = () => {
         console.log('Inicio de sesión exitoso');
         const json_response = await response.json()
         localStorage.setItem('token', json_response.token)
+        console.log(json_response.token)
+        console.log(json_response)
         navigate("/user");
         // Puedes realizar acciones adicionales aquí si es necesario, como redireccionar a otra página
       } else {
@@ -45,7 +47,7 @@ const Login = () => {
   };
 
   return (
-    <main className='border-solid border-2 border-red-700 flex h-screen justify-center items-center '>
+    <main className='flex h-screen justify-center items-center '>
     <form className='border-[1px] border-solid rounded  shadow-xl shadow-black flex items-center justify-around flex-col h-[400px] p-6' onSubmit={handleSubmit}>
       <section className='w-full'>
         <img className='w-[100px]'  src={dev} alt="dev" />
@@ -79,7 +81,9 @@ const Login = () => {
         <FontAwesomeIcon icon={faTwitter} />
         <FontAwesomeIcon icon={faGithub} />
       </section>
-      <h2>Don't have an account yet? <a className='text-blue-500 underline' href="http://localhost:5173/login"> Register</a></h2>
+      <h2>Don't have an account yet? 
+        <NavLink to='/'>Register</NavLink>
+      </h2>
       
     </form>
     </main>

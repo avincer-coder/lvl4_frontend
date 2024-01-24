@@ -5,11 +5,10 @@ import Navegacion from '../navegacion/navegacion';
 const Paginas = () => {
   const [values, setValues] = useState({ url: '', nombre: '', descripcion: '' });
   const [showModal, setShowModal] = useState(false);
+  const token = localStorage.getItem('token');
 
   const openModal = () => {
     setShowModal(true);
-    console.log('abrir modal');
-    console.log(showModal);
   };
 
   const closeModal = () => {
@@ -18,7 +17,6 @@ const Paginas = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
     try {
       const response = await fetch('http://127.0.0.1:8000/api/paginas', {
         method: 'POST',
@@ -49,8 +47,11 @@ const Paginas = () => {
   };
 
   return (
-    <>
-      <Navegacion />
+    <main className='flex'>
+      <section>
+        <Navegacion className="bg-blue-600" />
+      </section>
+      <section>
       <button onClick={openModal}>Abrir Modal</button>
       {showModal && (
         <div className="modal-overlay">
@@ -92,8 +93,9 @@ const Paginas = () => {
       <TablaPaginas 
       showModal={showModal} 
       closeModal={closeModal}
-    />
-    </>
+      />
+      </section>
+    </main>
   );
 };
 
