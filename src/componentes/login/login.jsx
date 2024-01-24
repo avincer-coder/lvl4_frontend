@@ -61,7 +61,7 @@ const Login = () => {
           name="usuario"
           value={credentials.usuario}
           onChange={handleChange}
-          placeholder='Usuario'
+          placeholder='User'
         />
       </label>
       <label  className='block border-solid border border-slate-500 rounded pl-2 w-[350px] h-10 flex items-center'>
@@ -71,7 +71,7 @@ const Login = () => {
           name="password"
           value={credentials.password}
           onChange={handleChange}
-          placeholder='Contraseña'
+          placeholder='Password'
         />
       </label>
       <br />

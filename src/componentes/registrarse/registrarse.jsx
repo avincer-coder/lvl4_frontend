@@ -48,7 +48,7 @@ const Registrarse = () => {
               <section className='w-full'>
                 <img src={dev} alt="dev" className='w-[150px]' />
               </section >
-              <h1 className='w-full text-2xl font-bold	'>Create a new user and password</h1>
+              <h1 className='w-full text-3xl font-bold	'>Create a new user and password!</h1>
               <label className='block border-solid border border-slate-500 rounded pl-2 w-[350px] h-10 flex items-center'>
                 <FontAwesomeIcon icon={faEnvelope} />
                 <input
@@ -57,7 +57,7 @@ const Registrarse = () => {
                   name="usuario"
                   value={values.usuario}
                   onChange={handleChange}
-                  placeholder='Usuario'
+                  placeholder='User'
                 />
               </label>
               <label  className='block border-solid border border-slate-500 rounded pl-2 w-[350px] h-10 flex items-center'>
@@ -68,7 +68,7 @@ const Registrarse = () => {
                   name="password"
                   value={values.password}
                   onChange={handleChange}
-                  placeholder='Contraseña'
+                  placeholder='Password'
                 />
               </label>
               <button className='bg-blue-600 text-neutral-100	w-full rounded-lg h-10'type="submit">Register</button>
