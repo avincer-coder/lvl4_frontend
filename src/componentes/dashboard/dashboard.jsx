@@ -1,9 +1,21 @@
 import Navegacion from "../navegacion/navegacion";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSmileBeam, faBars, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LogoutButton from "../funciones/logout";
+import { useEffect } from "react";
 const Dashboard = () => {
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+
+  
+
+  useEffect(() => {
+    if (token == null) {
+      navigate("/login");
+    }
+  }, []);
+
     return(
     <main className='flex bg-gray-300 border-red-500 h-screen	'>
         <section >

@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import Navegacion from "../navegacion/navegacion";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faChevronDown, faBars, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import LogoutButton from "../funciones/logout";
 
 const TablaBitacoras = () => {
     const [datos, setDatos] = useState([]);
-   
-
+    const navigate = useNavigate();
+  
+    
     useEffect(() => {
           
             const token = localStorage.getItem('token');
+            if (token == null) {
+              navigate("/login");
+            }
             console.log(token);
         
             const fetchData = async () => {

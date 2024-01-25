@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TablaPaginas from './tabla_paginas';
 import Navegacion from '../navegacion/navegacion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faChevronDown, faBars, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import LogoutButton from '../funciones/logout';
 
 const Paginas = () => {
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token == null) {
+      navigate("/login");
+    }
+  }, []);
+
   const [values, setValues] = useState({ url: '', nombre: '', descripcion: '' });
   const [showModal, setShowModal] = useState(false);
-  const token = localStorage.getItem('token');
 
   const openModal = () => {
     setShowModal(true);

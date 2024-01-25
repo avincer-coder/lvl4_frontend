@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TablaUser from './tabla_user';
 import Navegacion from '../navegacion/navegacion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import { NavLink, } from 'react-router-dom';
-import sessionLogout from '../funciones/logout';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { NavLink, useNavigate, } from 'react-router-dom';
 import LogoutButton from '../funciones/logout';
 const User = () => {
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+
+  
+
+  useEffect(() => {
+    if (token == null) {
+      navigate("/login");
+    }
+  }, []);
+
+
   const [values, setValues] = useState({usuario:'', password:'', correo: '', nombres: '',  apellidos: '',  fecha: '' });
   const [showModal, setShowModal] = useState(false);
-  const token = localStorage.getItem('token');
   console.log(token);
   
   
@@ -79,10 +89,7 @@ const User = () => {
           <FontAwesomeIcon className="ml-4 mr-2" icon={faBars} />
           Home
         </NavLink>
-        {/* <button>Admin
-          <FontAwesomeIcon className="ml-4" icon={faChevronDown} />
-        </button> */}
-        {/* <NavLink to='/login' className="text-red-500"> Log out      <FontAwesomeIcon icon={faCaretRight} className="pr-2"/></NavLink> */}
+   
         < LogoutButton />
       </section>
       <h2 className='w-full ml-[120px] text-4xl font-semibold mb-[40px]'>
