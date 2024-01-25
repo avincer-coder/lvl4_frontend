@@ -3,6 +3,7 @@ import Navegacion from "../navegacion/navegacion";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faChevronDown, faBars, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import LogoutButton from "../funciones/logout";
 
 const TablaBitacoras = () => {
     const [datos, setDatos] = useState([]);
@@ -55,7 +56,7 @@ const TablaBitacoras = () => {
         {/* <button>Admin
           <FontAwesomeIcon className="ml-4" icon={faChevronDown} />
         </button> */}
-        <NavLink to='/login' className="text-red-500"> Log out <FontAwesomeIcon icon={faCaretRight} className="pr-2"/></NavLink>
+        < LogoutButton />
       </section>
       <h2 className='w-full ml-[120px] text-4xl font-semibold mb-[40px]'>
         Dashboard

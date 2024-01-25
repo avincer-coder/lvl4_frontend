@@ -1,3 +1,4 @@
+
 export const formatearFecha = (fechaStr) => {
     const fechaObj = new Date(fechaStr);
     const ano = fechaObj.getFullYear();
@@ -5,3 +6,6 @@ export const formatearFecha = (fechaStr) => {
     const dia = fechaObj.getDate();
     return `${ano}-${mes < 10 ? '0' : ''}${mes}-${dia < 10 ? '0' : ''}${dia}`;
   };
+
+
+  
