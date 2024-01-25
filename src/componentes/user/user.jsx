@@ -100,8 +100,15 @@ const User = () => {
         <button className='bg-blue-600 text-neutral-100	w-[200px] h-[40px] rounded-lg' onClick={openModal} >Agregar nuevo Usuario</button>
       </article>
       {showModal && (
-        <div className="modal-overlay border-[1px] border-solid rounded-lg bg-slate-50 w-[500px] h-[500px] mb-[50px] p-10">
-          <div className="modal flex flex-col	h-full">
+        <div className="modal-overlay border-[1px] border-solid rounded-lg bg-slate-50 w-[500px] h-[500px] mb-[50px] p-10 
+        
+        fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto">
+          <div className="modal flex flex-col	h-full
+          
+          fixed inset-0 bg-black ">
+            <div className=" relative">
+            <div className="bg-white   ">
+
             <form onSubmit={handleSubmit} className='modal flex flex-col h-full justify-between	'>
               <h3 className='text-2xl font-semibold'>Agregar Usuario</h3>
               <label className='flex flex-col font-semibold'>
@@ -162,7 +169,9 @@ const User = () => {
               <p className='text-gray-400 text-center'>La contraseña sera por defecto tu usuario</p>
               <button className='mb-[10px] bg-gray-600 text-neutral-100	w-full h-[35px] rounded-lg' type="submit">Guardar</button>
             </form>
+            </div>
             <button className='bg-red-600 text-neutral-100	w-full h-[40px] rounded-lg' onClick={closeModal}>Cerrar y Mostrar Nuevo Usuario</button>
+          </div>
           </div>
         </div>
       )}
